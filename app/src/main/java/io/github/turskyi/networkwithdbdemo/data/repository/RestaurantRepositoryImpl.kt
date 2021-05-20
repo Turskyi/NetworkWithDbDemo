@@ -22,6 +22,7 @@ class RestaurantRepositoryImpl @Inject constructor(
         },
         fetch = {
             // delay is added for demonstration purposes only
+//            TODO: remove delay
             delay(2000)
             netSource.getRestaurants()
         },
