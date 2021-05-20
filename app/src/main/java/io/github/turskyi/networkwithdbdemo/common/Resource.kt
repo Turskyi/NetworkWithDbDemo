@@ -1,5 +1,6 @@
-package io.github.turskyi.networkwithdbdemo.util
+package io.github.turskyi.networkwithdbdemo.common
 
+// source: https://developer.android.com/jetpack/guide
 sealed class Resource<T>(
     val data: T? = null,
     val error: Throwable? = null
