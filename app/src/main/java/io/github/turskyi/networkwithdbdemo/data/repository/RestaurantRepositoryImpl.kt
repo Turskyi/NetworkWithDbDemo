@@ -17,15 +17,8 @@ class RestaurantRepositoryImpl @Inject constructor(
     private val dbSource = db.restaurantDao()
 
     fun getRestaurants(): Flow<Resource<List<RestaurantEntity>>> = getNetworkBoundResource(
-        query = {
-            dbSource.getAllRestaurants()
-        },
-        fetch = {
-            // delay is added for demonstration purposes only
-//            TODO: remove delay
-            delay(2000)
-            netSource.getRestaurants()
-        },
+        query = { dbSource.getAllRestaurants() },
+        fetch = { netSource.getRestaurants() },
         saveFetchResult = { restaurantsResponse ->
             db.withTransaction {
                 dbSource.deleteAllRestaurants()
