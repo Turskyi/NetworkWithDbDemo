@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NetworkWithDbDemo"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".MainActivity">
+        <activity android:name=".features.restaurants.RestaurantActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -26,12 +26,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRestaurantApi(retrofit: Retrofit): RestaurantApi =
-        retrofit.create(RestaurantApi::class.java)
+    fun provideRestaurantApi(retrofit: Retrofit): RestaurantApi {
+        return retrofit.create(RestaurantApi::class.java)
+    }
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application) : RestaurantDatabase =
-        Room.databaseBuilder(app, RestaurantDatabase::class.java, "restaurant_database")
+    fun provideDatabase(app: Application) : RestaurantDatabase {
+        return Room.databaseBuilder(app, RestaurantDatabase::class.java, "restaurant_database")
             .build()
+    }
 }

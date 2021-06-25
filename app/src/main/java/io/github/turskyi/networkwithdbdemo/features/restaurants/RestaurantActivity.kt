@@ -1,4 +1,4 @@
-package io.github.turskyi.networkwithdbdemo
+package io.github.turskyi.networkwithdbdemo.features.restaurants
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,13 +7,11 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.turskyi.networkwithdbdemo.databinding.ActivityMainBinding
-import io.github.turskyi.networkwithdbdemo.features.restaurants.RestaurantAdapter
-import io.github.turskyi.networkwithdbdemo.features.restaurants.RestaurantViewModel
 import io.github.turskyi.networkwithdbdemo.common.Resource
 
-// for the sake of simplicity, MainActivity will hold the main screen without creating a fragment
-@AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+// for the sake of simplicity, RestaurantActivity will hold the main screen without creating a fragment
+@AndroidEntryPoint()
+class RestaurantActivity : AppCompatActivity() {
     private val viewModel: RestaurantViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,10 +24,10 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             recyclerView.apply {
                 adapter = restaurantAdapter
-                layoutManager = LinearLayoutManager(this@MainActivity)
+                layoutManager = LinearLayoutManager(this@RestaurantActivity)
             }
 
-            viewModel.restaurants.observe(this@MainActivity) { result ->
+            viewModel.restaurants.observe(this@RestaurantActivity) { result ->
                 restaurantAdapter.submitList(result.data)
 
                 progressBar.isVisible = result is Resource.Loading && result.data.isNullOrEmpty()
